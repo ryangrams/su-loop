@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Studio Upgrade — Stay in the loop">
+<meta property="og:description" content="We build studios that stop fighting the person running them. Join the Discord or get build updates and first access to the tools as they ship.">
+<meta name="twitter:card" content="summary">
+<title>Studio Upgrade — Stay in the loop</title>
+<meta name="description" content="We build studios that stop fighting the person running them. Join the Discord or get build updates and first access to the tools as they ship.">
+<style>
+  /* Studio Upgrade — light editorial landing system (design-system/LIGHT-EDITORIAL.md).
+     Public page, so type ships Montserrat (Gotham is licensed for internal use only).
+     Hosted build adds: <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"> */
+  :root {
+    color-scheme: light;
+    --su-sunflower:#FFC310; --su-fire:#FF6238; --su-raspy:#C60039; --su-plum:#930A3E;
+    --warm-white:#F7F1E8; --sand:#EFE7DB; --paper:#FFFFFF; --ink:#171316;
+    --text-primary:var(--ink);
+    --text-secondary:#5C5550;
+    --text-tertiary:#8A827B;
+    --border-subtle:rgba(23,19,22,0.10);
+
+    --font-display:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --font-mono:"IBM Plex Mono",ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,monospace;
+
+    --stripe:linear-gradient(90deg,#FFC310 0 25%,#FF6238 25% 50%,#C60039 50% 75%,#930A3E 75% 100%);
+    --stripe-v:linear-gradient(180deg,#FFC310 0 25%,#FF6238 25% 50%,#C60039 50% 75%,#930A3E 75% 100%);
+
+    --ease:cubic-bezier(0.2,0,0,1);
+    --radius:8px;
+  }
+
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--warm-white); color:var(--text-primary);
+    font-family:var(--font-display); line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+
+  .brandstripe { height:6px; background:var(--stripe); }
+  .wrap { max-width:600px; margin:0 auto; padding:0 20px 56px; }
+
+  header { display:flex; align-items:center; gap:10px; padding:24px 0 4px; }
+  header .mark { display:block; flex-shrink:0; }
+  header .wordmark { font-weight:800; font-size:0.95rem; letter-spacing:0.06em; text-transform:uppercase; }
+
+  .hero { padding:30px 0 26px; }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:0.72rem; font-weight:500;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--su-raspy);
+    margin:0 0 14px;
+  }
+  .eyebrow i { width:7px; height:7px; border-radius:50%; background:var(--su-raspy); }
+  h1 {
+    font-size:clamp(2.2rem,8vw,3rem); line-height:1.04; letter-spacing:-0.02em;
+    font-weight:800; margin:0 0 14px; text-wrap:balance;
+  }
+  .lede { font-size:1.05rem; color:var(--text-secondary); margin:0; }
+
+  .card {
+    position:relative; background:var(--paper); border:1px solid var(--border-subtle);
+    border-radius:var(--radius); padding:20px 20px 20px 26px; margin-bottom:14px; overflow:hidden;
+  }
+  .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--stripe-v); }
+  .card h2 { font-size:1.12rem; font-weight:800; letter-spacing:-0.01em; margin:0 0 5px; }
+  .card p { margin:0 0 14px; color:var(--text-secondary); font-size:0.93rem; }
+
+  .btn {
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:var(--font-display); font-weight:700; font-size:0.95rem;
+    border:0; border-radius:6px; padding:13px 20px; cursor:pointer; width:100%;
+    transition:background 160ms var(--ease), transform 120ms var(--ease);
+    text-decoration:none;
+  }
+  .btn:active { transform:scale(0.985); }
+  .btn-dark { background:var(--ink); color:var(--warm-white); }
+  .btn-dark:hover { background:#2E282C; }
+  .btn-soon { background:var(--sand); color:var(--text-tertiary); cursor:default; border:1px solid var(--border-subtle); }
+  .btn-soon:hover { background:var(--sand); }
+  .btn-soon:active { transform:none; }
+  .btn-fire { background:var(--su-fire); color:var(--ink); }
+  .btn-fire:hover { background:var(--su-sunflower); }
+  .btn:focus-visible { outline:none; box-shadow:0 0 0 2px var(--warm-white), 0 0 0 4px var(--su-fire); }
+
+  .field { display:flex; gap:8px; flex-wrap:wrap; }
+  .field input {
+    flex:1 1 190px; min-width:0; background:var(--sand); border:1px solid var(--border-subtle);
+    border-radius:6px; color:var(--ink); font:inherit; font-size:0.95rem; padding:13px 14px;
+    transition:border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+  }
+  .field input::placeholder { color:var(--text-tertiary); }
+  .field input:focus { outline:none; border-color:var(--su-fire); box-shadow:0 0 0 3px rgba(255,98,56,0.18); }
+  .field .btn { width:auto; flex:0 0 auto; }
+  .form-error { color:var(--su-raspy); font-size:0.82rem; margin:9px 0 0; min-height:1.05em; }
+
+  .done { display:none; align-items:flex-start; gap:9px; }
+  .done.show { display:flex; animation:rise 320ms var(--ease) both; }
+  .done i { width:8px; height:8px; border-radius:50%; background:var(--su-sunflower); margin-top:7px; flex-shrink:0; }
+  .done p { margin:0; color:var(--text-secondary); font-size:0.93rem; }
+  .done strong { color:var(--ink); }
+
+  .chips { display:flex; flex-wrap:wrap; gap:7px; margin:20px 0 16px; }
+  .chip {
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--font-mono); font-size:0.66rem; font-weight:500;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--text-secondary);
+    background:var(--warm-white); border:1px solid var(--border-subtle);
+    border-radius:4px; padding:6px 9px;
+  }
+  .chip i { width:7px; height:7px; border-radius:50%; flex-shrink:0; background:var(--su-raspy); }
+
+  .emph {
+    display:flex; align-items:flex-start; gap:10px;
+    background:var(--sand); border-radius:4px; padding:14px 16px;
+    font-size:0.9rem; color:var(--text-secondary);
+  }
+  .emph i { width:8px; height:8px; border-radius:50%; background:var(--su-fire); margin-top:7px; flex-shrink:0; }
+  .emph strong { color:var(--ink); }
+  .emph p { margin:0; }
+
+  footer { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    border-top:1px solid var(--border-subtle); margin-top:26px; padding-top:18px; }
+  footer span { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.06em; color:var(--text-tertiary); }
+
+  .reveal { opacity:0; transform:translateY(10px); animation:rise 380ms var(--ease) forwards; }
+  .reveal.d1 { animation-delay:60ms; }
+  .reveal.d2 { animation-delay:120ms; }
+  @keyframes rise { to { opacity:1; transform:none; } }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brandstripe"></div>
+<div class="wrap">
+  <header>
+    <svg class="mark" width="15" height="23" viewBox="0 0 30 46" aria-hidden="true"><rect x="0" width="6" height="46" rx="3" fill="#930A3E"/><rect x="8" width="6" height="46" rx="3" fill="#C60039"/><rect x="16" width="6" height="46" rx="3" fill="#FF6238"/><rect x="24" width="6" height="46" rx="3" fill="#FFC310"/></svg>
+    <span class="wordmark">Studio Upgrade</span>
+  </header>
+
+  <section class="hero reveal">
+    <p class="eyebrow"><i aria-hidden="true"></i>Building in the open</p>
+    <h1>One button, and you're live.</h1>
+    <p class="lede">We build studios that stop fighting the person running them, and we're building the software to match. Switching, graphics, the prompter, tally, record. Your first shoot or your thousandth, it should just work. None of it is out yet. Come watch it get built.</p>
+  </section>
+
+  <section class="card reveal d1">
+    <h2>Join the Discord</h2>
+    <p>Studio builds, gear talk, and what we shipped this week. Ask the dumb question. It's usually the good one.</p>
+    <a class="btn btn-dark" id="discord" href="#" rel="noopener">Open the Discord</a>
+  </section>
+
+  <section class="card reveal d2">
+    <h2>Get the drops</h2>
+    <p>Build updates, and first access to the tools the day they ship.</p>
+    <form id="optin" novalidate>
+      <div class="field">
+        <input id="email" type="email" name="email" inputmode="email" autocomplete="email"
+               placeholder="you@studio.com" aria-label="Email address" required>
+        <button class="btn btn-fire" type="submit">Keep me posted</button>
+      </div>
+      <p class="form-error" id="err" role="alert"></p>
+    </form>
+    <div class="done" id="done" aria-live="polite">
+      <i aria-hidden="true"></i>
+      <p><strong>You're in.</strong> We'll send the builds your way as they land.</p>
+    </div>
+  </section>
+
+  <div class="chips">
+    <span class="chip"><i aria-hidden="true"></i>Sidekick · in dev</span>
+    <span class="chip"><i aria-hidden="true"></i>Teleprompter · in testing</span>
+  </div>
+
+  <div class="emph">
+    <i aria-hidden="true"></i>
+    <p><strong>No spam, ever.</strong> Build updates, early access, and the occasional mistake we learned from in public. Leave whenever you want.</p>
+  </div>
+
+  <footer>
+    <span>Studio Upgrade</span>
+    <span>Saint Paul, MN</span>
+  </footer>
+</div>
+
+<script>
+  /* ---- SET THESE TWO ---- */
+  var DISCORD_URL = "";  // paste the public Discord invite here
+  var ENDPOINT    = "";  // GHL inbound-webhook URL; drops the lead into the CRM tagged early-access
+  /* ----------------------- */
+
+  (function () {
+    var d = document.getElementById('discord');
+    if (DISCORD_URL) {
+      d.href = DISCORD_URL;
+      d.target = "_blank";
+    } else {
+      // No invite yet: show an honest waiting state instead of a dead button.
+      d.className = 'btn btn-soon';
+      d.textContent = 'Discord opens soon';
+      d.setAttribute('aria-disabled', 'true');
+      d.removeAttribute('href');
+      d.addEventListener('click', function (e) { e.preventDefault(); });
+    }
+  })();
+
+  (function () {
+    var form = document.getElementById('optin'), email = document.getElementById('email'),
+        err = document.getElementById('err'), done = document.getElementById('done');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.textContent = "";
+      var v = email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { err.textContent = "That email doesn't look right. Mind checking it?"; email.focus(); return; }
+      var ok = function () { form.style.display = 'none'; done.classList.add('show'); };
+      if (ENDPOINT) {
+        fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ email:v, source:'social-connect' }) })
+          .then(ok).catch(function () { err.textContent = "Something hiccuped on our end. Try again in a moment."; });
+      } else { ok(); }
+    });
+  })();
+</script>
+</body>
+</html>
